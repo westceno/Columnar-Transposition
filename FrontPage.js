@@ -28,3 +28,7 @@ function CreateMatrix(keyword, message)
 	return matrix;
 }
 
+function Sort(matrix)
+{
+	
+}
