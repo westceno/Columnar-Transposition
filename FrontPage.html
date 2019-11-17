@@ -1,13 +1,37 @@
-<HTML>
-	<head>
-		<script src="dragtable.js"></script>
-	</head>
-    <body>
-        
-        <form action="/action_page.php">
-            Plain Text: <input type="text" name="PlainText" value=""><br>
-            Cipher Text: <input type="text" name="CipherText" value=""><br>
-            <input type="submit" value="Submit">
-        </form>
-    </body>
+<HEAD>
+	<script src="dragtable.js"></script>
+</HEAD>
+
+<body>
+		
+		<form action= "/action_page.php">
+			Plaintext: <br>
+			<input type="text" name="Plaintext"
+				value="">
+				
+			<input type="submit" value="Encipher" style="float: right"> 
+			<br>
+			
+			Key: <br>
+			<input type="text" name="Key"
+				value="">
+			
+			<br><br>
+			
+			Key Length: <br>
+			<input type="number" id= "Key Length"
+				name="Key Length"
+					min= "0" max="25">
+
+			<br><br><br>
+			
+			Ciphertext: <br>
+			<input type="text" name="Ciphertext"
+				value="">
+				
+			<input type="submit" value="Decipher" style="float: right">
+		</form>
+
+</body>
 </HTML>
+
