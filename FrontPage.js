@@ -144,3 +144,18 @@ function DecipherWithKeyWordLength()
 	//Create table
 }
 
+
+function EncipherOnClick()
+{
+	var keyword = removeSymbols(document.getElementById('key').value);
+	var pt = removeSymbols(document.getElementById('pt').value);	
+	
+	var matrix = CreateMatrix(keyword, matrix);
+	matrix = Sort(keyword, pt);
+	
+	//Create table
+	
+	//print without keyword
+	//how do we want to have information print?
+	
+}
