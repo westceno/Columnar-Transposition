@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<HTML>
 <HEAD>
 	<script src="dragtable.js"></script>
 </HEAD>
@@ -8,14 +6,14 @@
 		
 		<form action= "/action_page.php">
 			Plaintext: <br>
-			<input type="text" name="Plaintext"
+			<input type="text" id="PT" name="Plaintext"
 				value="">
 				
 			<input type="submit" value="Encipher" style="float: right"> 
 			<br>
 			
 			Key: <br>
-			<input type="text" name="Key"
+			<input type="text" id="key" name="Key"
 				value="">
 			
 			<br><br>
@@ -28,7 +26,7 @@
 			<br><br><br>
 			
 			Ciphertext: <br>
-			<input type="text" name="Ciphertext"
+			<input type="text" id="CT" name="Ciphertext"
 				value="">
 				
 			<input type="submit" value="Decipher" style="float: right">
@@ -37,7 +35,3 @@
 </body>
 </HTML>
 
-<!--
-For tables, do <table class="draggable">
-
--->
