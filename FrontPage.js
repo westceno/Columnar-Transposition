@@ -1,3 +1,27 @@
+function CreateTable(matrix)
+{
+	document.writeln("<table class=\"draggable\">");
+	
+	document.writeln("<tr>");
+	for(var x = 0; x < matrix[i].length; x++)
+	{
+		document.writeln("<th>" + matrix[x][i] + "<\th>");
+	}
+	document.writeln("<\tr>");
+	
+	for(var i = 1; i < matrix.length; i++)
+	{
+		document.writeln("<tr>");
+		for(var x = 0; x < matrix[i].length; x++)
+		{
+			document.writeln("<td>" + matrix[x][i] + "<\td>");
+		}
+		document.writeln("<\tr>");
+	}
+	
+	document.writeln("<\table>");	
+}
+
 function CreateMatrix(keyword, message)
 {
 	var matrix = [];
@@ -91,6 +115,7 @@ function Sort(matrix)
 
 function removeSymbols(message)
 {
+	//parthenses
 	message.replace(" ", "")
 	message.replace(",", "")
 	message.replace("'", "")
@@ -125,7 +150,7 @@ function DecipherWithKeyWord()
 	
 	//put in order what if there are two different columns? Maybe a stat anylasis
 	
-	//Create table
+	CreateTable(matrix)
 }
 
 function DecipherWithKeyWordLength()
@@ -141,7 +166,8 @@ function DecipherWithKeyWordLength()
 	
 	var matrix = CreateMatrixOffLength(keyword, matrix);
 	
-	//Create table
+	matrix = Sort(matrix);
+	CreateTable(matrix)
 }
 
 
@@ -151,11 +177,12 @@ function EncipherOnClick()
 	var pt = removeSymbols(document.getElementById('pt').value);	
 	
 	var matrix = CreateMatrix(keyword, matrix);
-	matrix = Sort(keyword, pt);
+	matrix = Sort(pt);
 	
-	//Create table
+	CreateTable(matrix)
 	
 	//print without keyword
 	//how do we want to have information print?
 	
 }
+ 
