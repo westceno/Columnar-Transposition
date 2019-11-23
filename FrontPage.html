@@ -1,12 +1,13 @@
 <HEAD>
 	<script src="dragtable.js"></script>
+	<script src="FrontPage.js"></script>
 </HEAD>
 
 <body>
 		
 		<form action= "/action_page.php">
 			Plaintext: <br>
-			<input type="text" id="PT" name="Plaintext"
+			<input type="text" id="pt" name="pt"
 				value="">
 				
 			<input type="submit" value="Encipher" style="float: right"> 
@@ -29,8 +30,10 @@
 			<input type="text" id="CT" name="Ciphertext"
 				value="">
 				
-			<input type="submit" value="Decipher" style="float: right">
+			<input type="submit" value="Decipher" style="float: right" onclick="EncipherOnClick()">
 		</form>
+		
+		<button onclick="EncipherOnClick()">Encipher</button>
 
 </body>
 </HTML>

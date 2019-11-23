@@ -1,0 +1,77 @@
+
+
+
+function CreateMatrixOffLength(keyword, message)
+{
+	var matrix = [];
+	keyword = keyword.split(" ");
+	for( var i = 0; i < keyword.length; i++)
+	{
+		matrix.push = [];
+		matrix[x].push(keyword[x]);
+	}
+	
+	int messageIndex = 0;
+	
+	
+	while(messageIndex < message.length)
+	{
+		for( var x = 0; x < keyword.length; x++)
+		{
+			if(messageIndex < message.length)
+			{
+				matrix[x].push(message[messageIndex]);
+			}
+			else
+			{
+				matrix[x].push("X");			
+			}
+		}
+	}
+	
+	return matrix;
+}
+
+
+
+
+function respace(message)
+{
+	var lowerLimit = 0;
+	var upperLimit = 4;
+	while(upperLimit < message.length)
+	{
+		message = message.slice(lowerLimit, upperLimit) + " " + message.slice(upperLimit, message.length);
+	}
+	
+	return message;
+}
+
+function DecipherWithKeyWord()
+{
+	var keyword = removeSymbols(document.getElementById('key').value);
+	var ct = removeSymbols(document.getElementById('ct').value);	
+	
+	var matrix = CreateMatrix(keyword, matrix);
+	
+	//put in order what if there are two different columns? Maybe a stat anylasis
+	
+	CreateTable(matrix);
+}
+
+function DecipherWithKeyWordLength()
+{
+	var keywordLength = document.getElementById('Key Length').value;
+	var ct = removeSymbols(document.getElementById('ct').value);	
+	
+	var keyword = "";
+	for(int i = 0; i < keywordLength; i++)
+	{
+		keyword += keyword + " " + i;
+	}
+	
+	var matrix = CreateMatrixOffLength(keyword, matrix);
+	
+	matrix = Sort(matrix);
+	CreateTable(matrix);
+}

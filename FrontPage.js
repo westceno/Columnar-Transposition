@@ -1,25 +1,15 @@
-function CreateTable(matrix)
+function EncipherOnClick()
 {
-	document.writeln("<table class=\"draggable\">");
+	var keyword = removeSymbols(document.getElementById('key').value);
+	var pt = removeSymbols(document.getElementById('pt').value);	
 	
-	document.writeln("<tr>");
-	for(var x = 0; x < matrix[i].length; x++)
-	{
-		document.writeln("<th>" + matrix[x][i] + "<\th>");
-	}
-	document.writeln("<\tr>");
+	var matrix = CreateMatrix(keyword, pt);
+	matrix = Sort(matrix);
 	
-	for(var i = 1; i < matrix.length; i++)
-	{
-		document.writeln("<tr>");
-		for(var x = 0; x < matrix[i].length; x++)
-		{
-			document.writeln("<td>" + matrix[x][i] + "<\td>");
-		}
-		document.writeln("<\tr>");
-	}
+	CreateTable(matrix);
 	
-	document.writeln("<\table>");	
+	//print without keyword
+	//how do we want to have information print?
 }
 
 function CreateMatrix(keyword, message)
@@ -27,16 +17,16 @@ function CreateMatrix(keyword, message)
 	var matrix = [];
 	for( var i = 0; i < keyword.length; i++)
 	{
-		matrix.push = [];
-		matrix[x].push(keyword[x]);
+		matrix[i] = [];
+		matrix[i].push(keyword[i]);
 	}
 	
-	int messageIndex = 0;
+	var messageIndex = 0;
 	
 	
 	while(messageIndex < message.length)
 	{
-		for( var x = 0; x < keyword.length; x++)
+		for( var x = 1; x < keyword.length; x++)
 		{
 			if(messageIndex < message.length)
 			{
@@ -46,23 +36,41 @@ function CreateMatrix(keyword, message)
 			{
 				matrix[x].push("X");			
 			}
+			messageIndex++;
 		}
 	}
 	
 	return matrix;
 }
 
-function CreateMatrixOffLength(keyword, message)
+
+function removeSymbols(message)
+{
+	//parthenses
+	message.replace(" ", "");
+	message.replace(",", "");
+	message.replace("'", "");
+	message.replace(".", "");
+	message.replace("-", "");
+	message.replace("/", "");
+	message.replace("\n", "");
+	message.replace("\t", "");
+	message.replace(":", "");
+	return message;
+	
+}
+
+
+function CreateMatrix(keyword, message)
 {
 	var matrix = [];
-	keyword = keyword.split(" ");
 	for( var i = 0; i < keyword.length; i++)
 	{
-		matrix.push = [];
-		matrix[x].push(keyword[x]);
+		matrix[i] = [];
+		matrix[i].push(keyword[i]);
 	}
 	
-	int messageIndex = 0;
+	var messageIndex = 0;
 	
 	
 	while(messageIndex < message.length)
@@ -77,10 +85,28 @@ function CreateMatrixOffLength(keyword, message)
 			{
 				matrix[x].push("X");			
 			}
+			messageIndex++;
 		}
 	}
 	
 	return matrix;
+}
+
+
+function removeSymbols(message)
+{
+	//parthenses
+	message.replace(" ", "");
+	message.replace(",", "");
+	message.replace("'", "");
+	message.replace(".", "");
+	message.replace("-", "");
+	message.replace("/", "");
+	message.replace("\n", "");
+	message.replace("\t", "");
+	message.replace(":", "");
+	return message;
+	
 }
 
 function Sort(matrix)
@@ -90,15 +116,15 @@ function Sort(matrix)
 	var swapLocation = 0;
 	
 	
-	while(lowerLimit <=  matrix.length)
+	while(lowerLimit <  matrix.length)
 	{
 		var lowest = matrix[lowerLimit][0];
 
-		for(int i = lowerLimit + 1; i <= matrix.length; i++)
+		for(var i = lowerLimit + 1; i < matrix.length; i++)
 		{
-			if(lowest > matrix[lowerLimit][0])
+			if(lowest > matrix[i][0])
 			{
-				lowest = matrix[lowerLimit][0];
+				lowest = matrix[i][0];
 				swapLocation = i;
 			}
 		}
@@ -108,26 +134,71 @@ function Sort(matrix)
 		matrix[swapLocation] = temp;
 		
 		lowerLimit++;
+		swapLocation = lowerLimit;
 	}
 	
 	return matrix;
 }
 
-function removeSymbols(message)
+ function CreateTable(matrix)
 {
-	//parthenses
-	message.replace(" ", "")
-	message.replace(",", "")
-	message.replace("'", "")
-	message.replace(".", "")
-	message.replace("-", "")
-	message.replace("/", "")
-	message.replace("\n", "")
-	message.replace("\t", "")
-	message.replace(":", "")
-	return message;
+	document.writeln("<table class=\"draggable\">");
+	
+	document.writeln("<tr>");
+	for(var x = 0; x < matrix.length; x++)
+	{
+		document.writeln("<th>" + matrix[x][0]);
+	}
+
+	
+	for(var i = 1; i < matrix[i].length; i++)
+	{
+		document.writeln("<tr>");
+		for(var x = 0; x < matrix.length; x++)
+		{
+			document.writeln("<td>" + matrix[x][i]);
+		}
+	}
 	
 }
+
+
+
+
+function CreateMatrixOffLength(keyword, message)
+{
+	
+	var matrix = [];
+	keyword = keyword.split(" ");
+	for( var i = 0; i < keyword.length; i++)
+	{
+		matrix.push = [];
+		matrix[x].push(keyword[x]);
+	}
+	
+	var messageIndex = 0;
+	
+	
+	while(messageIndex < message.length)
+	{
+		for( var x = 0; x < keyword.length; x++)
+		{
+			if(messageIndex < message.length)
+			{
+				matrix[x].push(message[messageIndex]);
+			}
+			else
+			{
+				matrix[x].push("X");			
+			}
+		}
+	}
+	
+	return matrix;
+}
+
+
+
 
 function respace(message)
 {
@@ -150,7 +221,7 @@ function DecipherWithKeyWord()
 	
 	//put in order what if there are two different columns? Maybe a stat anylasis
 	
-	CreateTable(matrix)
+	CreateTable(matrix);
 }
 
 function DecipherWithKeyWordLength()
@@ -159,7 +230,7 @@ function DecipherWithKeyWordLength()
 	var ct = removeSymbols(document.getElementById('ct').value);	
 	
 	var keyword = "";
-	for(int i = 0; i < keywordLength; i++)
+	for(var i = 0; i < keywordLength; i++)
 	{
 		keyword += keyword + " " + i;
 	}
@@ -167,22 +238,7 @@ function DecipherWithKeyWordLength()
 	var matrix = CreateMatrixOffLength(keyword, matrix);
 	
 	matrix = Sort(matrix);
-	CreateTable(matrix)
+	CreateTable(matrix);
 }
 
-
-function EncipherOnClick()
-{
-	var keyword = removeSymbols(document.getElementById('key').value);
-	var pt = removeSymbols(document.getElementById('pt').value);	
-	
-	var matrix = CreateMatrix(keyword, matrix);
-	matrix = Sort(pt);
-	
-	CreateTable(matrix)
-	
-	//print without keyword
-	//how do we want to have information print?
-	
-}
  
