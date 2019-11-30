@@ -27,14 +27,18 @@
 			<br><br><br>
 			
 			Ciphertext: <br>
-			<input type="text" id="CT" name="Ciphertext"
+			<input type="text" id="ct" name="Ciphertext"
 				value="">
 				
 			<input type="submit" value="Decipher" style="float: right" onclick="EncipherOnClick()">
 		</form>
 		
 		<button onclick="EncipherOnClick()">Encipher</button>
+		<button onclick="DecipherWithKeyWord()">Decipher with keyword</button>
+		<button onclick="DecipherWithKeyWordLength()">Decipher with keyword length</button>
 
+		<div id="tablePrint"> </div>
+		<div id="ErrorMessage"> </div>
 </body>
 </HTML>
 

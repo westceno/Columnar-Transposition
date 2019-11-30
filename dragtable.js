@@ -76,7 +76,7 @@ dragtable = {
   init: function() {
     // Don't initialize twice
     if (arguments.callee.done) return;
-    arguments.callee.done = true;
+    //arguments.callee.done = true;
     if (_dgtimer) clearInterval(_dgtimer);
     if (!document.createElement || !document.getElementsByTagName) return;
 
@@ -451,7 +451,7 @@ var dgListenOnLoad = false;
 /* for Mozilla/Opera9 */
 if (document.addEventListener) {
   dgListenOnLoad = true;
-  document.addEventListener("DOMContentLoaded", dragtable.init, false);
+  //document.addEventListener("DOMContentLoaded", dragtable.init, false);
 }
 
 /* for Internet Explorer */
@@ -472,7 +472,7 @@ if (/WebKit/i.test(navigator.userAgent)) { // sniff
   dgListenOnLoad = true;
   var _dgtimer = setInterval(function() {
     if (/loaded|complete/.test(document.readyState)) {
-      dragtable.init(); // call the onload handler
+      //dragtable.init(); // call the onload handler
     }
   }, 10);
 }
@@ -480,7 +480,7 @@ if (/WebKit/i.test(navigator.userAgent)) { // sniff
 /* for other browsers */
 /* Avoid this unless it's absolutely necessary (it breaks sorttable) */
 if (!dgListenOnLoad) {
-  window.onload = dragtable.init;
+  //window.onload = dragtable.init;
 }
 
 // Dean's forEach: http://dean.edwards.name/base/forEach.js
