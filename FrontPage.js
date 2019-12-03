@@ -10,7 +10,7 @@ function EncipherOnClick()
 	
 	//print without keyword
 	var message = GetMessageText(matrix);
-	document.getElementById("ct").value = message;
+	document.getElementById("ct").value = respace(message);
 }
 
 function GetMessageText(matrix)
@@ -229,7 +229,9 @@ function respace(message)
 	var upperLimit = 4;
 	while(upperLimit < message.length)
 	{
-		message = message.slice(lowerLimit, upperLimit) + " " + message.slice(upperLimit, message.length);
+		message = message.slice(0, upperLimit) + " " + message.slice(upperLimit, message.length);
+		lowerLimit += 5;
+		upperLimit += 5;
 	}
 	
 	return message;
@@ -250,7 +252,7 @@ function DecipherWithKeyWord()
 	CreateTable(matrix);
 	
 	var message = GetMessageText(matrix);
-	document.getElementById("pt").value = message;
+	document.getElementById("pt").value = respace(message);
 }
 
 function DecipherWithKeyWordLength()
@@ -272,6 +274,8 @@ function DecipherWithKeyWordLength()
 	var vowels = ["a", "e", "i", "o", "u", "y"];
 	var count = 0;
 	
+	document.getElementById("ErrorMessage").innerHTML = " ";
+	
 	for(var i = 1; i < matrix[0].length; i++)
 	{
 		for(var x = 0; x < matrix.length; x++)
@@ -282,7 +286,7 @@ function DecipherWithKeyWordLength()
 			}
 		}
 		
-		document.getElementById("ErrorMessage").innerHTML = " ";
+		
 
 		if(count/(matrix.length * 1.0) < 0.25 )
 		{
@@ -294,6 +298,23 @@ function DecipherWithKeyWordLength()
 		}
 	}
 	
+}
+
+function getTableData()
+{
+	var table = document.getElementById("draggable");
+	var info = document.getElementById("pt");
+	info.value = ""
+	for (i = 1; i < table.rows.length; i++) {
+        // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+        var objCells = table.rows.item(i).cells;
+
+        // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+        for (var j = 0; j < objCells.length; j++) {
+            info.value = info.value + ' ' + objCells.item(j).innerHTML;
+        }
+    }
+    
 }
 
 

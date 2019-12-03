@@ -334,6 +334,21 @@ dragtable = {
         dragtable.rememberDrag(dragObj.table.id, dragObj.startCol, targetCol);
       }
     }
+	
+	//Add in movement here
+	var table = document.getElementById("\\\"table\\\"");
+	var info = document.getElementById("pt");
+	info.value = ""
+	for (i = 1; i < table.rows.length; i++) {
+        // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+        var objCells = table.rows.item(i).cells;
+
+        // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+        for (var j = 0; j < objCells.length; j++) {
+            info.value = info.value + objCells.item(j).innerHTML;
+        }
+    }
+	info.value = respace(info.value);
   },
 
   // Which column does the x value fall inside of? x should include scrollLeft.
