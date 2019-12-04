@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Website Layout</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+} 
+
+/* Style the header */
+.header {
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: .5%;
+  text-align: center;
+  font-size: 125%;
+}
+
+.ctpt{
+  background-color: white;
+  width: 63%;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px;
+}
+
+.keyw{
+  background-color: white;
+  width: 40%;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 10px;
+}
+
+.keyl{
+  background-color: white;
+  width: 15%;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 10px;
+}
+
+div {
+  border-radius: 1px;
+  background-color: #FFFFFF;
+  padding: 5px;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  padding: 20px;
+
+}
+
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.footer {
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: .5%;
+  text-align: left;
+  font-size: 50%; 
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+@media screen and (max-width: 10000000px) {
+  input[type=text] {
+    width: 63%;
+    margin-top: 0;
+  }
+}
+</style>
+
+	<script src="dragtable.js"></script>
+	<script src="FrontPage.js"></script>
+</head>
+<body>
+
+<div class="header">
+  <h1>Columnar Transposition</h1>
+</div>
+
+
+<div class="container">
+  <form action="/action_page.php">
+  
+  <div class="ctpt">
+    <div class="col-25">
+       <label for="ptext">Plaintext</label>
+    </div>
+    <div class="col-75">
+      <input class="ctpt" type="text" id="ptext" name="plaintext" placeholder=" ">
+    </div>
+  </div>
+
+
+
+
+  <div class="keyw"> 
+    <div class="col-25">
+       <label for="ptext">Keyword</label>
+    </div>
+    <div class="col-75">
+      <input class="keyw" type="text" id="keyw" name="keyword" placeholder=" ">
+    </div>
+  </div>
+  
+  <div class="keyl">
+    <div class="col-25">
+       <label for="ptext">Keyword Length</label>
+    </div>
+    <div class="col-75">
+      <input class="keyl" type="text" id="keyl" name="keywordlength" placeholder=" ">
+    </div>
+  </div>
+
+<div class="ctpt">
+  <div class="row">
+    <div class="col-25">
+     <label for="ctext">Ciphertext</label>
+    </div>
+    <div class="col-75">
+     <input class="ctpt" type="text" id="ctext" name="ciphertext" placeholder=" ">
+    </div>
+  </div>
+
+  
+  </form>
+</div>
+
+		<button onclick="EncipherOnClick()">Encipher</button>
+		<button onclick="DecipherWithKeyWord()">Decipher with keyword</button>
+		<button onclick="DecipherWithKeyWordLength()">Decipher with keyword length</button>
+
+		<div id="tablePrint"> </div>
+		<div id="ErrorMessage"> </div>
+
+
+<div class="footer">
+	<h1>Designed by Weston Rainer and Nate Pinhas for CSC 483</h1>
+</div>
+
+
+</body>
+</html>
