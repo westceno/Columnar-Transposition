@@ -226,12 +226,12 @@ function CreateMatrixOffLength(keyword, message)
 function respace(message)
 {
 	var lowerLimit = 0;
-	var upperLimit = 4;
+	var upperLimit = 5;
 	while(upperLimit < message.length)
 	{
 		message = message.slice(0, upperLimit) + " " + message.slice(upperLimit, message.length);
-		lowerLimit += 5;
-		upperLimit += 5;
+		lowerLimit += 6;
+		upperLimit += 6;
 	}
 	
 	return message;
