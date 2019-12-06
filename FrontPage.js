@@ -1,7 +1,7 @@
 function EncipherOnClick()
 {
 	var keyword = removeSymbols(document.getElementById('key').value);
-	var pt = removeSymbols(document.getElementById('pt').value);	
+	var pt = removeSymbols(document.getElementById('pt').value).toUpperCase();	
 	
 	var matrix = CreateMatrix(keyword, pt);
 	matrix = Sort(matrix);
@@ -83,15 +83,15 @@ function CreateMatrix(keyword, message)
 function removeSymbols(message)
 {
 	//parthenses
-	message.replace(" ", "");
-	message.replace(",", "");
-	message.replace("'", "");
-	message.replace(".", "");
-	message.replace("-", "");
-	message.replace("/", "");
-	message.replace("\n", "");
-	message.replace("\t", "");
-	message.replace(":", "");
+	message = message.replace(/ /g, "");
+	message = message.replace(/,/g, "");
+	message = message.replace(/'/g, "");
+	message = message.replace(/\./g, "");
+	message = message.replace(/-/g, "");
+	message = message.replace(/\//g, "");
+	message = message.replace(/\n/g, "");
+	message = message.replace(/\t/g, "");
+	message = message.replace(/:/g, "");
 	return message;
 	
 }
@@ -168,7 +168,7 @@ function ReorderKeyWord(keyword, matrix)
 	myTable = myTable + "<tr>";
 	for(var x = 0; x < matrix.length; x++)
 	{
-		myTable = myTable + "<th>" + matrix[x][0];
+		myTable = myTable + "<th class=\"cell\">" + matrix[x][0];
 	}
 
 	
@@ -177,7 +177,7 @@ function ReorderKeyWord(keyword, matrix)
 		myTable = myTable + "<tr>";
 		for(var x = 0; x < matrix.length; x++)
 		{
-			myTable = myTable + "<td>" + matrix[x][i];
+			myTable = myTable + "<td class=\"cell\">" + matrix[x][i];
 		}
 	}
 	
@@ -241,7 +241,7 @@ function DecipherWithKeyWord()
 {
 	var keyword = removeSymbols(document.getElementById('key').value);
 	var reorder = keyword.split('').sort().join('');
-	var ct = removeSymbols(document.getElementById('ct').value);	
+	var ct = removeSymbols(document.getElementById('ct').value).toLowerCase();	
 	
 	var matrix = CreateMatrix(reorder, ct);
 	
@@ -259,7 +259,7 @@ function DecipherWithKeyWordLength()
 {
 	var keywordLength = document.getElementById('Key Length').value;
 	var test = document.getElementById('ct').value;
-	var ct = removeSymbols(document.getElementById('ct').value);	
+	var ct = removeSymbols(document.getElementById('ct').value).toLowerCase();	
 	
 	var keyword = "0";
 	for(var i = 1; i < keywordLength; i++)

@@ -4,6 +4,8 @@
 <title>CSS Website Layout</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="dragtable.js"></script>
+<script src="FrontPage.js"></script>
 <style>
 body {
   margin: 0;
@@ -23,6 +25,19 @@ body {
   border: 1px solid black;
   padding: 20px;
   margin: 10px;
+}
+
+.table{
+
+	height: 50%;
+	position: relative;
+	padding: 20px;
+	margin: 10px;
+	
+}
+
+.cell{
+	width: 50px;
 }
 
 .ctptsize{
@@ -118,9 +133,10 @@ div {
 	<div class="row">
     <div class="col-25">
        <label for="ptext">Plaintext</label>
+	   
     </div>
     <div class="col-75">
-      <input class="ctpt" type="text" id="ptext" name="plaintext" placeholder=" ">
+      <input class="ctpt" type="text" id="pt" name="plaintext" placeholder=" ">
     </div>
 	</div>
   </div>
@@ -129,12 +145,13 @@ div {
 
 
   <div class="keywsize"> 
+  
 	<div class="row">
     <div class="col-25">
        <label for="ptext">Keyword</label>
     </div>
     <div class="col-75">
-      <input class="keyw" type="text" id="keyw" name="keyword" placeholder=" ">
+      <input class="keyw" type="text" id="key" name="keyword" placeholder=" ">
     </div>
   </div>
 	</div>
@@ -145,22 +162,23 @@ div {
        <label for="ptext">Keyword Length</label>
     </div>
     <div class="col-75">
-      <input class="keyl" type="text" id="keyl" name="keywordlength" placeholder=" ">
+      <input class="keyl" type="text" id="Key Length" name="keywordlength" placeholder=" ">
     </div>
   </div>
   </div>
-
+  <div class="table" id="tablePrint"> </div>
+  <div id="ErrorMessage"> </div>
 <div class="ctptsize">
 	<div class="row">
     <div class="col-25">
      <label for="ctext">Ciphertext</label>
     </div>
     <div class="col-75">
-     <input class="ctpt" type="text" id="ctext" name="ciphertext" placeholder=" ">
+     <input class="ctpt" type="text" id="ct" name="ciphertext" placeholder=" ">
     </div>
   </div>
 </div>
-  
+
   </form>
 </div>
 
@@ -168,8 +186,11 @@ div {
 		<button onclick="DecipherWithKeyWord()">Decipher with keyword</button>
 		<button onclick="DecipherWithKeyWordLength()">Decipher with keyword length</button>
 
-		<div id="tablePrint"> </div>
-		<div id="ErrorMessage"> </div>
+		
+		
+		
+
+		
 
 
 <div class="footer">

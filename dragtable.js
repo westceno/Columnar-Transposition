@@ -348,7 +348,7 @@ dragtable = {
             info.value = info.value + objCells.item(j).innerHTML;
         }
     }
-	info.value = respace(info.value);
+	info.value = respace(info.value).toLowerCase();
   },
 
   // Which column does the x value fall inside of? x should include scrollLeft.
