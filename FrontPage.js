@@ -17,10 +17,27 @@ function GetMessageText(matrix)
 {
 	var message = "";
 	
+	for( var x = 0; x < matrix.length; x++)
+	{
+		for(var i = 1; i < matrix[0].length; i++)
+		{
+		
+			message += matrix[x][i];
+		}	
+	}
+	
+	return message;
+}
+
+function GetMessageTextEncipher(matrix)
+{
+	var message = "";
+	
 	for(var i = 1; i < matrix[0].length; i++)
 	{
 		for( var x = 0; x < matrix.length; x++)
 		{
+		
 			message += matrix[x][i];
 		}	
 	}
@@ -79,6 +96,38 @@ function CreateMatrix(keyword, message)
 	return matrix;
 }
 
+function CreateMatrixDecipher(keyword, message)
+{
+	var matrix = [];
+	for( var i = 0; i < keyword.length; i++)
+	{
+		matrix[i] = [];
+		matrix[i].push(keyword[i]);
+	}
+	
+	var messageIndex = 0;
+	
+	var index = 0;
+	
+	while(messageIndex < message.length)
+	{
+		for( var x = 0; x < message.length/keyword.length; x++)
+		{
+			if(messageIndex < message.length)
+			{
+				matrix[index].push(message[messageIndex]);
+			}
+			else
+			{
+				matrix[index].push("*");			
+			}
+			messageIndex++;
+		}
+		index++;
+	}
+	
+	return matrix;
+}
 
 function removeSymbols(message)
 {
@@ -201,20 +250,23 @@ function CreateMatrixOffLength(keyword, message)
 	var messageIndex = 0;
 	
 	
+		var index = 0;
+	
 	while(messageIndex < message.length)
 	{
-		for( var x = 0; x < keyword.length; x++)
+		for( var x = 0; x < message.length/keyword.length; x++)
 		{
 			if(messageIndex < message.length)
 			{
-				matrix[x].push(message[messageIndex]);
+				matrix[index].push(message[messageIndex]);
 			}
 			else
 			{
-				matrix[x].push("X");			
+				matrix[index].push("*");			
 			}
 			messageIndex++;
 		}
+		index++;
 	}
 	
 	return matrix;
@@ -239,11 +291,11 @@ function respace(message)
 
 function DecipherWithKeyWord()
 {
-	var keyword = removeSymbols(document.getElementById('key').value);
+	var keyword = removeSymbols(document.getElementById('key').value).toLowerCase();
 	var reorder = keyword.split('').sort().join('');
 	var ct = removeSymbols(document.getElementById('ct').value).toLowerCase();	
 	
-	var matrix = CreateMatrix(reorder, ct);
+	var matrix = CreateMatrixDecipher(reorder, ct);
 	
 	//put in order what if there are two different columns? Maybe a stat anylasis
 	
@@ -251,7 +303,7 @@ function DecipherWithKeyWord()
 
 	CreateTable(matrix);
 	
-	var message = GetMessageText(matrix);
+	var message = GetMessageTextEncipher(matrix);
 	document.getElementById("pt").value = respace(message);
 }
 
